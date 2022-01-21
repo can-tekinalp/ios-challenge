@@ -8,22 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		A6856E73279B759800EA35D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6856E72279B759800EA35D5 /* AppDelegate.swift */; };
-		A6856E75279B759800EA35D5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6856E74279B759800EA35D5 /* SceneDelegate.swift */; };
-		A6856E77279B759800EA35D5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6856E76279B759800EA35D5 /* ViewController.swift */; };
 		A6856E7A279B759800EA35D5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6856E78279B759800EA35D5 /* Main.storyboard */; };
 		A6856E7C279B759900EA35D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6856E7B279B759900EA35D5 /* Assets.xcassets */; };
 		A6856E7F279B759900EA35D5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6856E7D279B759900EA35D5 /* LaunchScreen.storyboard */; };
+		A6856E89279B775700EA35D5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6856E88279B775700EA35D5 /* HomeViewController.swift */; };
+		A6856E8C279B777200EA35D5 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6856E8B279B777200EA35D5 /* UIViewController+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A6856E6F279B759800EA35D5 /* ios-challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6856E72279B759800EA35D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A6856E74279B759800EA35D5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A6856E76279B759800EA35D5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A6856E79279B759800EA35D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A6856E7B279B759900EA35D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A6856E7E279B759900EA35D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A6856E80279B759900EA35D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A6856E88279B775700EA35D5 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		A6856E8B279B777200EA35D5 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +56,39 @@
 		A6856E71279B759800EA35D5 /* ios-challenge */ = {
 			isa = PBXGroup;
 			children = (
+				A6856E86279B774000EA35D5 /* Application */,
+				A6856E8A279B776000EA35D5 /* Extensions */,
 				A6856E72279B759800EA35D5 /* AppDelegate.swift */,
-				A6856E74279B759800EA35D5 /* SceneDelegate.swift */,
-				A6856E76279B759800EA35D5 /* ViewController.swift */,
 				A6856E78279B759800EA35D5 /* Main.storyboard */,
 				A6856E7B279B759900EA35D5 /* Assets.xcassets */,
 				A6856E7D279B759900EA35D5 /* LaunchScreen.storyboard */,
 				A6856E80279B759900EA35D5 /* Info.plist */,
 			);
 			path = "ios-challenge";
+			sourceTree = "<group>";
+		};
+		A6856E86279B774000EA35D5 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				A6856E87279B774A00EA35D5 /* Home */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		A6856E87279B774A00EA35D5 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				A6856E88279B775700EA35D5 /* HomeViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		A6856E8A279B776000EA35D5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A6856E8B279B777200EA35D5 /* UIViewController+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,9 +161,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6856E77279B759800EA35D5 /* ViewController.swift in Sources */,
 				A6856E73279B759800EA35D5 /* AppDelegate.swift in Sources */,
-				A6856E75279B759800EA35D5 /* SceneDelegate.swift in Sources */,
+				A6856E8C279B777200EA35D5 /* UIViewController+Extensions.swift in Sources */,
+				A6856E89279B775700EA35D5 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,6 +312,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "ios-challenge/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -295,7 +320,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cantekinalp.ios-challenge";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -306,6 +331,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "ios-challenge/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -313,7 +339,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cantekinalp.ios-challenge";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
