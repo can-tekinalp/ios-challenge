@@ -22,6 +22,15 @@
 		A6856E9F279B82AC00EA35D5 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6856E9E279B82AC00EA35D5 /* Movie.swift */; };
 		A6856EA1279B837300EA35D5 /* GetMoviesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6856EA0279B837300EA35D5 /* GetMoviesResponse.swift */; };
 		A6856EA4279B841500EA35D5 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6856EA3279B841500EA35D5 /* Log.swift */; };
+		A6856EA6279BEDA200EA35D5 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6856EA5279BEDA200EA35D5 /* Home.storyboard */; };
+		A6856EAA279BEEC400EA35D5 /* HomeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6856EA9279BEEC400EA35D5 /* HomeHeaderView.swift */; };
+		A6856EAC279BEEDB00EA35D5 /* HomeHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6856EAB279BEEDB00EA35D5 /* HomeHeaderView.xib */; };
+		A6856EB1279BF25E00EA35D5 /* HomeHeaderCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6856EAF279BF25E00EA35D5 /* HomeHeaderCollectionCell.swift */; };
+		A6856EB2279BF25E00EA35D5 /* HomeHeaderCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6856EB0279BF25E00EA35D5 /* HomeHeaderCollectionCell.xib */; };
+		A6856EB6279BF6AA00EA35D5 /* HomeTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6856EB4279BF6AA00EA35D5 /* HomeTableCell.swift */; };
+		A6856EB7279BF6AA00EA35D5 /* HomeTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6856EB5279BF6AA00EA35D5 /* HomeTableCell.xib */; };
+		A6856EB9279C226E00EA35D5 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6856EB8279C226E00EA35D5 /* Colors.swift */; };
+		A6856EBB279C22E100EA35D5 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6856EBA279C22E100EA35D5 /* UIColor+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +52,15 @@
 		A6856E9E279B82AC00EA35D5 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		A6856EA0279B837300EA35D5 /* GetMoviesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMoviesResponse.swift; sourceTree = "<group>"; };
 		A6856EA3279B841500EA35D5 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		A6856EA5279BEDA200EA35D5 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		A6856EA9279BEEC400EA35D5 /* HomeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderView.swift; sourceTree = "<group>"; };
+		A6856EAB279BEEDB00EA35D5 /* HomeHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeHeaderView.xib; sourceTree = "<group>"; };
+		A6856EAF279BF25E00EA35D5 /* HomeHeaderCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderCollectionCell.swift; sourceTree = "<group>"; };
+		A6856EB0279BF25E00EA35D5 /* HomeHeaderCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeHeaderCollectionCell.xib; sourceTree = "<group>"; };
+		A6856EB4279BF6AA00EA35D5 /* HomeTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableCell.swift; sourceTree = "<group>"; };
+		A6856EB5279BF6AA00EA35D5 /* HomeTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeTableCell.xib; sourceTree = "<group>"; };
+		A6856EB8279C226E00EA35D5 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		A6856EBA279C22E100EA35D5 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		D876E86B6FD047F77FA00C78 /* Pods_ios_challenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ios_challenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -122,7 +140,9 @@
 		A6856E87279B774A00EA35D5 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				A6856E88279B775700EA35D5 /* HomeViewController.swift */,
+				A6856EA8279BEEAD00EA35D5 /* View */,
+				A6856EA7279BEEA400EA35D5 /* ViewController */,
+				A6856EA5279BEDA200EA35D5 /* Home.storyboard */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -131,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				A6856E8B279B777200EA35D5 /* UIViewController+Extensions.swift */,
+				A6856EBA279C22E100EA35D5 /* UIColor+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -150,6 +171,7 @@
 			children = (
 				A6856E94279B7DB100EA35D5 /* ApiKey.swift */,
 				A6856E9A279B808D00EA35D5 /* Messages.swift */,
+				A6856EB8279C226E00EA35D5 /* Colors.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -177,6 +199,51 @@
 				A6856EA3279B841500EA35D5 /* Log.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		A6856EA7279BEEA400EA35D5 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A6856E88279B775700EA35D5 /* HomeViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		A6856EA8279BEEAD00EA35D5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A6856EB3279BF68300EA35D5 /* HomeTableCell */,
+				A6856EAE279BF23500EA35D5 /* HeaderCollectionCell */,
+				A6856EAD279BF22B00EA35D5 /* HeaderView */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A6856EAD279BF22B00EA35D5 /* HeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				A6856EA9279BEEC400EA35D5 /* HomeHeaderView.swift */,
+				A6856EAB279BEEDB00EA35D5 /* HomeHeaderView.xib */,
+			);
+			path = HeaderView;
+			sourceTree = "<group>";
+		};
+		A6856EAE279BF23500EA35D5 /* HeaderCollectionCell */ = {
+			isa = PBXGroup;
+			children = (
+				A6856EAF279BF25E00EA35D5 /* HomeHeaderCollectionCell.swift */,
+				A6856EB0279BF25E00EA35D5 /* HomeHeaderCollectionCell.xib */,
+			);
+			path = HeaderCollectionCell;
+			sourceTree = "<group>";
+		};
+		A6856EB3279BF68300EA35D5 /* HomeTableCell */ = {
+			isa = PBXGroup;
+			children = (
+				A6856EB4279BF6AA00EA35D5 /* HomeTableCell.swift */,
+				A6856EB5279BF6AA00EA35D5 /* HomeTableCell.xib */,
+			);
+			path = HomeTableCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,8 +306,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6856E7F279B759900EA35D5 /* LaunchScreen.storyboard in Resources */,
+				A6856EAC279BEEDB00EA35D5 /* HomeHeaderView.xib in Resources */,
 				A6856E7C279B759900EA35D5 /* Assets.xcassets in Resources */,
+				A6856EB2279BF25E00EA35D5 /* HomeHeaderCollectionCell.xib in Resources */,
 				A6856E7A279B759800EA35D5 /* Main.storyboard in Resources */,
+				A6856EB7279BF6AA00EA35D5 /* HomeTableCell.xib in Resources */,
+				A6856EA6279BEDA200EA35D5 /* Home.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,13 +364,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6856EAA279BEEC400EA35D5 /* HomeHeaderView.swift in Sources */,
+				A6856EB9279C226E00EA35D5 /* Colors.swift in Sources */,
 				A6856EA1279B837300EA35D5 /* GetMoviesResponse.swift in Sources */,
 				A6856E99279B7FEB00EA35D5 /* NetworkServiceError.swift in Sources */,
 				A6856EA4279B841500EA35D5 /* Log.swift in Sources */,
 				A6856E9B279B808D00EA35D5 /* Messages.swift in Sources */,
+				A6856EB1279BF25E00EA35D5 /* HomeHeaderCollectionCell.swift in Sources */,
+				A6856EBB279C22E100EA35D5 /* UIColor+Extension.swift in Sources */,
 				A6856E9F279B82AC00EA35D5 /* Movie.swift in Sources */,
 				A6856E95279B7DB100EA35D5 /* ApiKey.swift in Sources */,
 				A6856E73279B759800EA35D5 /* AppDelegate.swift in Sources */,
+				A6856EB6279BF6AA00EA35D5 /* HomeTableCell.swift in Sources */,
 				A6856E92279B7AFF00EA35D5 /* Routes.swift in Sources */,
 				A6856E8C279B777200EA35D5 /* UIViewController+Extensions.swift in Sources */,
 				A6856E97279B7FC700EA35D5 /* NetworkService.swift in Sources */,
