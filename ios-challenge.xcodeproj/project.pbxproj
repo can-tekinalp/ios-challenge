@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,6 +14,14 @@
 		A6856E7F279B759900EA35D5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6856E7D279B759900EA35D5 /* LaunchScreen.storyboard */; };
 		A6856E89279B775700EA35D5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6856E88279B775700EA35D5 /* HomeViewController.swift */; };
 		A6856E8C279B777200EA35D5 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6856E8B279B777200EA35D5 /* UIViewController+Extensions.swift */; };
+		A6856E92279B7AFF00EA35D5 /* Routes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6856E91279B7AFF00EA35D5 /* Routes.swift */; };
+		A6856E95279B7DB100EA35D5 /* ApiKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6856E94279B7DB100EA35D5 /* ApiKey.swift */; };
+		A6856E97279B7FC700EA35D5 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6856E96279B7FC700EA35D5 /* NetworkService.swift */; };
+		A6856E99279B7FEB00EA35D5 /* NetworkServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6856E98279B7FEB00EA35D5 /* NetworkServiceError.swift */; };
+		A6856E9B279B808D00EA35D5 /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6856E9A279B808D00EA35D5 /* Messages.swift */; };
+		A6856E9F279B82AC00EA35D5 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6856E9E279B82AC00EA35D5 /* Movie.swift */; };
+		A6856EA1279B837300EA35D5 /* GetMoviesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6856EA0279B837300EA35D5 /* GetMoviesResponse.swift */; };
+		A6856EA4279B841500EA35D5 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6856EA3279B841500EA35D5 /* Log.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +35,14 @@
 		A6856E80279B759900EA35D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A6856E88279B775700EA35D5 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A6856E8B279B777200EA35D5 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
+		A6856E91279B7AFF00EA35D5 /* Routes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routes.swift; sourceTree = "<group>"; };
+		A6856E94279B7DB100EA35D5 /* ApiKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKey.swift; sourceTree = "<group>"; };
+		A6856E96279B7FC700EA35D5 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		A6856E98279B7FEB00EA35D5 /* NetworkServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceError.swift; sourceTree = "<group>"; };
+		A6856E9A279B808D00EA35D5 /* Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Messages.swift; sourceTree = "<group>"; };
+		A6856E9E279B82AC00EA35D5 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		A6856EA0279B837300EA35D5 /* GetMoviesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMoviesResponse.swift; sourceTree = "<group>"; };
+		A6856EA3279B841500EA35D5 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		D876E86B6FD047F77FA00C78 /* Pods_ios_challenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ios_challenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -48,7 +64,6 @@
 				5C71D718D707E78554BA227A /* Pods-ios-challenge.debug.xcconfig */,
 				5AC4F16D27B53A927E377B2C /* Pods-ios-challenge.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -82,7 +97,10 @@
 			isa = PBXGroup;
 			children = (
 				A6856E86279B774000EA35D5 /* Application */,
+				A6856E90279B7AED00EA35D5 /* Network */,
 				A6856E8A279B776000EA35D5 /* Extensions */,
+				A6856E93279B7DA600EA35D5 /* Constants */,
+				A6856EA2279B840B00EA35D5 /* Utils */,
 				A6856E72279B759800EA35D5 /* AppDelegate.swift */,
 				A6856E78279B759800EA35D5 /* Main.storyboard */,
 				A6856E7B279B759900EA35D5 /* Assets.xcassets */,
@@ -95,6 +113,7 @@
 		A6856E86279B774000EA35D5 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				A6856E9C279B826000EA35D5 /* Common */,
 				A6856E87279B774A00EA35D5 /* Home */,
 			);
 			path = Application;
@@ -114,6 +133,50 @@
 				A6856E8B279B777200EA35D5 /* UIViewController+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A6856E90279B7AED00EA35D5 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				A6856E91279B7AFF00EA35D5 /* Routes.swift */,
+				A6856E96279B7FC700EA35D5 /* NetworkService.swift */,
+				A6856E98279B7FEB00EA35D5 /* NetworkServiceError.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		A6856E93279B7DA600EA35D5 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				A6856E94279B7DB100EA35D5 /* ApiKey.swift */,
+				A6856E9A279B808D00EA35D5 /* Messages.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		A6856E9C279B826000EA35D5 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				A6856E9D279B826700EA35D5 /* Models */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		A6856E9D279B826700EA35D5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A6856EA0279B837300EA35D5 /* GetMoviesResponse.swift */,
+				A6856E9E279B82AC00EA35D5 /* Movie.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A6856EA2279B840B00EA35D5 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				A6856EA3279B841500EA35D5 /* Log.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -230,8 +293,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6856EA1279B837300EA35D5 /* GetMoviesResponse.swift in Sources */,
+				A6856E99279B7FEB00EA35D5 /* NetworkServiceError.swift in Sources */,
+				A6856EA4279B841500EA35D5 /* Log.swift in Sources */,
+				A6856E9B279B808D00EA35D5 /* Messages.swift in Sources */,
+				A6856E9F279B82AC00EA35D5 /* Movie.swift in Sources */,
+				A6856E95279B7DB100EA35D5 /* ApiKey.swift in Sources */,
 				A6856E73279B759800EA35D5 /* AppDelegate.swift in Sources */,
+				A6856E92279B7AFF00EA35D5 /* Routes.swift in Sources */,
 				A6856E8C279B777200EA35D5 /* UIViewController+Extensions.swift in Sources */,
+				A6856E97279B7FC700EA35D5 /* NetworkService.swift in Sources */,
 				A6856E89279B775700EA35D5 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
