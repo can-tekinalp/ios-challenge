@@ -8,6 +8,7 @@
 import UIKit
 
 protocol MovieCellViewModelDelegate: AnyObject {
+    var index: Int { get }
     func showLoadingIndicator(_ isLoading: Bool, for index: Int)
     func imageLoadCompleted(_ image: UIImage?, for index: Int)
 }
@@ -27,9 +28,11 @@ class MovieCellViewModel {
     
     func getImage(for index: Int) {
         imageLoader.showLoadingHandler = { [weak self] isLoading in
+            guard self?.delegate?.index == self?.index else { return }
             self?.delegate?.showLoadingIndicator(isLoading, for: index)
         }
         imageLoader.getImage { [weak self] image in
+            guard self?.delegate?.index == self?.index else { return }
             self?.delegate?.imageLoadCompleted(image, for: index)
         }
     }

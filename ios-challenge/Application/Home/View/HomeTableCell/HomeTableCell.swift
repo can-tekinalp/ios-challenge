@@ -57,12 +57,10 @@ extension HomeTableCell {
 extension HomeTableCell: MovieCellViewModelDelegate {
     
     func showLoadingIndicator(_ isLoading: Bool, for index: Int) {
-        guard self.index == index else { return }
         isLoading ? activityIndicator.startAnimating() : activityIndicator.stopAnimating()
     }
     
     func imageLoadCompleted(_ image: UIImage?, for index: Int) {
-        guard self.index == index else { return }
         movieImageView.image = image
     }
 }
