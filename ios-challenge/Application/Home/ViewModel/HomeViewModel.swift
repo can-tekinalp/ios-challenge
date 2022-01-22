@@ -29,19 +29,31 @@ class HomeViewModel {
             self.showLoadingHandler?(false)
             switch homePageResult {
             case .success(let movies):
-                let firstFive = Array(movies.nowPlayingMovies.prefix(5))
-                self.headerViewModel = HomePageHeaderViewModel(movies: firstFive)
-                self.tableCellViewModelList = movies.upcomingMovies.map {
-                    return MovieCellViewModel(
-                        movie: $0,
-                        imageLoader: ImageLoader(imageUrl: $0.backdropUrl)
-                    )
-                }
+                self.setupCellViewModels(result: movies)
                 onSuccess()
             case .failure(let errorMessage):
                 onError(errorMessage)
             }
         }
+    }
+    
+    private func setupCellViewModels(result: HomePageResult) {
+        let firstFive = Array(result.nowPlayingMovies.prefix(5))
+        self.headerViewModel = HomePageHeaderViewModel(movies: firstFive)
+
+        let upcomingMovies = result.upcomingMovies
+        var tableCellViewModelList: [MovieCellViewModel] = []
+        tableCellViewModelList.reserveCapacity(upcomingMovies.count)
+        for (index, movie) in upcomingMovies.enumerated() {
+            tableCellViewModelList.append(
+                MovieCellViewModel(
+                    index: index,
+                    movie: movie,
+                    imageLoader: ImageLoader(imageUrl: movie.backdropUrl)
+                )
+            )
+        }
+        self.tableCellViewModelList = tableCellViewModelList
     }
     
     func fetchNextPage() {

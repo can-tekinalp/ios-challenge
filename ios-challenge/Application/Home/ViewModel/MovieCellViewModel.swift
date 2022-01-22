@@ -7,19 +7,31 @@
 
 import UIKit
 
+protocol MovieCellViewModelDelegate: AnyObject {
+    func showLoadingIndicator(_ isLoading: Bool, for index: Int)
+    func imageLoadCompleted(_ image: UIImage?, for index: Int)
+}
+
 class MovieCellViewModel {
     
     private let movie: Movie
+    let index: Int
     var imageLoader: ImageLoaderProtocol
+    weak var delegate: MovieCellViewModelDelegate?
     
-    init(movie: Movie, imageLoader: ImageLoaderProtocol) {
+    init(index: Int, movie: Movie, imageLoader: ImageLoaderProtocol) {
+        self.index = index
         self.movie = movie
         self.imageLoader = imageLoader
     }
     
-    func getImage(showLoadingHandler: @escaping (Bool) -> Void, completionHandler: @escaping (UIImage?) -> Void) {
-        imageLoader.showLoadingHandler = showLoadingHandler
-        imageLoader.getImage(completionHandler: completionHandler)
+    func getImage(for index: Int) {
+        imageLoader.showLoadingHandler = { [weak self] isLoading in
+            self?.delegate?.showLoadingIndicator(isLoading, for: index)
+        }
+        imageLoader.getImage { [weak self] image in
+            self?.delegate?.imageLoadCompleted(image, for: index)
+        }
     }
 }
 

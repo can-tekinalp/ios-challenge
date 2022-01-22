@@ -16,12 +16,22 @@ class HomePageHeaderViewModel {
     
     init(movies: [Movie]) {
         self.movies = movies
-        self.cellViewModelList = movies.map {
-            return MovieCellViewModel(
-                movie: $0,
-                imageLoader: ImageLoader(imageUrl: $0.backdropUrl)
+        setupCellViewModels()
+    }
+    
+    private func setupCellViewModels() {
+        var cellViewModelList: [MovieCellViewModel] = []
+        cellViewModelList.reserveCapacity(movies.count)
+        for (index, movie) in movies.enumerated() {
+            cellViewModelList.append(
+                MovieCellViewModel(
+                    index: index,
+                    movie: movie,
+                    imageLoader: ImageLoader(imageUrl: movie.backdropUrl)
+                )
             )
         }
+        self.cellViewModelList = cellViewModelList
     }
     
     func cellViewModel(at index: Int) -> MovieCellViewModel {

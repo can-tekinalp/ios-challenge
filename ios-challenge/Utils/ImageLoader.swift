@@ -8,24 +8,35 @@
 import SDWebImage
 import UIKit
 
+typealias ImageLoadCompletionHandler = (UIImage?) -> Void
+
 protocol ImageLoaderProtocol {
+    var cachedImage: UIImage? { get }
     var showLoadingHandler: ShowLoadingHandler? { get set }
-    func getImage(completionHandler: @escaping (UIImage?) -> Void)
+    func getImage(completionHandler: @escaping ImageLoadCompletionHandler)
 }
 
 class ImageLoader: ImageLoaderProtocol {
     
     private let imageUrl: URL?
+    private var operation: SDWebImageCombinedOperation?
+    var cachedImage: UIImage?
     var showLoadingHandler: ShowLoadingHandler?
     
     init(imageUrl: URL?) {
         self.imageUrl = imageUrl
     }
     
-    func getImage(completionHandler: @escaping (UIImage?) -> Void) {
+    func getImage(completionHandler: @escaping ImageLoadCompletionHandler) {
+        if let image = cachedImage {
+            completionHandler(image)
+            return
+        }
         showLoadingHandler?(true)
-        SDWebImageManager.shared.loadImage(imageUrl) { [weak self] image in
+        operation?.cancel()
+        operation = SDWebImageManager.shared.loadImage(imageUrl) { [weak self] image in
             self?.showLoadingHandler?(false)
+            self?.cachedImage = image
             completionHandler(image)
         }
     }

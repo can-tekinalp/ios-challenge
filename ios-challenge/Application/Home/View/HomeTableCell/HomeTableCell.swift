@@ -17,6 +17,8 @@ final class HomeTableCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var lineView: UIView!
     
+    var index: Int = -1
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -24,20 +26,22 @@ final class HomeTableCell: UITableViewCell {
     }
     
     override func prepareForReuse() {
+        super.prepareForReuse()
         movieImageView.image = nil
+        activityIndicator.stopAnimating()
     }
     
-    func configure(with viewModel: MovieCellViewModel?) {
+    func configure(with viewModel: MovieCellViewModel?, index: Int) {
+        self.index = index
         titleLabel.text = viewModel?.title
         descriptionLabel.text = viewModel?.description
         dateLabel.text = viewModel?.date
-        viewModel?.getImage(
-            showLoadingHandler: { [weak self] isLoading in
-                isLoading ? self?.activityIndicator.startAnimating() : self?.activityIndicator.stopAnimating()
-            }, completionHandler: { [weak self] image in
-                self?.movieImageView.image = image
-            }
-        )
+        viewModel?.delegate = self
+        viewModel?.getImage(for: index)
+    }
+    
+    func imageLoadCompleted() {
+        
     }
 }
 
@@ -53,3 +57,29 @@ extension HomeTableCell {
         lineView.backgroundColor = .lightGray
     }
 }
+
+extension HomeTableCell: MovieCellViewModelDelegate {
+    
+    func showLoadingIndicator(_ isLoading: Bool, for index: Int) {
+        guard self.index == index else { return }
+        isLoading ? activityIndicator.startAnimating() : activityIndicator.stopAnimating()
+    }
+    
+    func imageLoadCompleted(_ image: UIImage?, for index: Int) {
+        guard self.index == index else { return }
+        movieImageView.image = image
+    }
+}
+
+//viewModel?.getImage(
+//    showLoadingHandler: { [weak self] isLoading, imageForIndex in
+//        guard self?.index == imageForIndex else { return }
+//        isLoading ? self?.activityIndicator.startAnimating() : self?.activityIndicator.stopAnimating()
+//    }, completionHandler: { [weak self] image, imageForIndex in
+//        guard self?.index == imageForIndex else {
+//            print()
+//            return
+//        }
+//        self?.movieImageView.image = image
+//    }
+//)

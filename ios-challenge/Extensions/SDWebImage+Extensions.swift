@@ -9,8 +9,8 @@ import SDWebImage
 
 extension SDWebImageManager {
     
-    func loadImage(_ url: URL?, completionHandler: @escaping (UIImage?) -> Void) {
-        SDWebImageManager.shared.loadImage(with: url, options: [], progress: nil) { image, _, _, _, _, _ in
+    func loadImage(_ url: URL?, completionHandler: @escaping (UIImage?) -> Void) -> SDWebImageCombinedOperation? {
+        return SDWebImageManager.shared.loadImage(with: url, options: [.refreshCached], progress: nil) { image, _, _, _, _, _ in
             completionHandler(image)
         }
     }

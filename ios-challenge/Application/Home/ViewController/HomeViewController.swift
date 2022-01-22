@@ -75,7 +75,8 @@ extension HomeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTableCell", for: indexPath) as! HomeTableCell
-        cell.configure(with: homeViewModel.cellViewModel(at: indexPath.row))
+        cell.configure(with: homeViewModel.cellViewModel(at: indexPath.row), index: indexPath.row)
+        cell.lineView.alpha = indexPath.row == homeViewModel.cellCount - 1 ? 0 : 1
         return cell
     }
 }
@@ -96,7 +97,19 @@ extension HomeViewController: UITableViewDelegate {
         return HomeHeaderView.cellSize.height
     }
     
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return nil
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 1
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("did select")
     }
+}
+
+class FooterView: UIView {
+    
 }
