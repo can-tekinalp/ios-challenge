@@ -10,4 +10,13 @@ import Foundation
 enum NetworkServiceError: Error {
     case canceled
     case other(String)
+    
+    var message: String {
+        switch self {
+        case .other(let message):
+            return message
+        default:
+            return unexpectedErrorMessage
+        }
+    }
 }

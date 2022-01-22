@@ -7,6 +7,8 @@
 
 import Alamofire
 
+extension String: Error { }
+
 class NetworkService {
     
     static let shared = NetworkService()

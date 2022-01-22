@@ -15,6 +15,8 @@ final class HomeHeaderView: UIView {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var pageControl: UIPageControl!
     
+    var viewModel: HomePageHeaderViewModel?
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         initXib()
@@ -36,6 +38,16 @@ final class HomeHeaderView: UIView {
         contentView.backgroundColor = .clear
         self.backgroundColor = .clear
     }
+    
+    func configure(with viewModel: HomePageHeaderViewModel?) {
+        guard let viewModel = viewModel else { return }
+        self.viewModel = viewModel
+        if viewModel.shouldReloadData {
+            viewModel.shouldReloadData = false
+            collectionView.reloadData()
+            collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .centeredHorizontally, animated: false)
+        }
+    }
 }
 
 // MARK: Setup
@@ -51,11 +63,13 @@ extension HomeHeaderView {
 extension HomeHeaderView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return viewModel?.cellCount ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCell(withReuseIdentifier: "HomeHeaderCollectionCell", for: indexPath) as! HomeHeaderCollectionCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeHeaderCollectionCell", for: indexPath) as! HomeHeaderCollectionCell
+        cell.configure(with: viewModel?.cellViewModel(at: indexPath.row))
+        return cell
     }
 }
 
@@ -85,5 +99,24 @@ extension UIView {
             topAnchor.constraint(equalTo: superview.topAnchor).isActive = true
             bottomAnchor.constraint(equalTo: superview.bottomAnchor).isActive = true
         }
+    }
+    
+    func anchorCenterXToSuperview(constant: CGFloat = 0) {
+        translatesAutoresizingMaskIntoConstraints = false
+        if let anchor = superview?.centerXAnchor {
+            centerXAnchor.constraint(equalTo: anchor, constant: constant).isActive = true
+        }
+    }
+    
+    func anchorCenterYToSuperview(constant: CGFloat = 0) {
+        translatesAutoresizingMaskIntoConstraints = false
+        if let anchor = superview?.centerYAnchor {
+            centerYAnchor.constraint(equalTo: anchor, constant: constant).isActive = true
+        }
+    }
+    
+    func anchorCenterSuperview() {
+        anchorCenterXToSuperview()
+        anchorCenterYToSuperview()
     }
 }

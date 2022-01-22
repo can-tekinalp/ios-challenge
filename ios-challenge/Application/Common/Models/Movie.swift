@@ -5,6 +5,22 @@
 //  Created by Can Tekinalp on 22.01.2022.
 //
 
+import Foundation
+
+fileprivate let apiDateFormatter: DateFormatter = {
+    let formatter = DateFormatter()
+    formatter.locale = .current
+    formatter.dateFormat = "yyyy-MM-dd"
+    return formatter
+}()
+
+fileprivate let uiDateFormatter: DateFormatter = {
+    let formatter = DateFormatter()
+    formatter.locale = .current
+    formatter.dateFormat = "dd-MM-yyyy"
+    return formatter
+}()
+
 struct Movie: Decodable {
     let posterPath: String
     let adult: Bool
@@ -36,5 +52,18 @@ struct Movie: Decodable {
         case voteCount = "vote_count"
         case video = "video"
         case voteAverage = "vote_average"
+    }
+}
+
+extension Movie {
+    
+    var uiFormattedDate: String? {
+        guard let date = apiDateFormatter.date(from: releaseDate) else { return nil }
+        return uiDateFormatter.string(from: date)
+    }
+    
+    var backdropUrl: URL? {
+        guard let backdropPath = backdropPath else { return nil }
+        return URL(string: "https://image.tmdb.org/t/p/original\(backdropPath)")
     }
 }

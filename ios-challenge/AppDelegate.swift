@@ -21,7 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func setupInitialController() {
         window = UIWindow(frame: UIScreen.main.bounds)
         let storyboard = UIStoryboard(name: "Home", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "HomeViewController")
+        let controller = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+        controller.homeViewModel = HomeViewModel(homePageService: HomePageService())
         window?.rootViewController = controller
         window?.makeKeyAndVisible()
     }
