@@ -39,6 +39,7 @@
 		A6856EC2279C40ED00EA35D5 /* Result+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6856EC1279C40ED00EA35D5 /* Result+Extensions.swift */; };
 		A6856EC5279C411400EA35D5 /* HomePageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6856EC4279C411400EA35D5 /* HomePageService.swift */; };
 		A6856EC7279C43BC00EA35D5 /* HomePageHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6856EC6279C43BC00EA35D5 /* HomePageHeaderViewModel.swift */; };
+		A692FD27279CC459006FE803 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A692FD26279CC459006FE803 /* UIView+Extensions.swift */; };
 		A6F2B320279CA366003A5397 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F2B31F279CA366003A5397 /* DetailViewController.swift */; };
 		A6F2B322279CA377003A5397 /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6F2B321279CA377003A5397 /* Detail.storyboard */; };
 		A6F2B325279CA844003A5397 /* DetailPageInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F2B324279CA844003A5397 /* DetailPageInfoView.swift */; };
@@ -84,6 +85,7 @@
 		A6856EC1279C40ED00EA35D5 /* Result+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Result+Extensions.swift"; sourceTree = "<group>"; };
 		A6856EC4279C411400EA35D5 /* HomePageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageService.swift; sourceTree = "<group>"; };
 		A6856EC6279C43BC00EA35D5 /* HomePageHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageHeaderViewModel.swift; sourceTree = "<group>"; };
+		A692FD26279CC459006FE803 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		A6F2B31F279CA366003A5397 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DetailViewController.swift; path = "ios-challenge/Application/Detail/DetailViewController.swift"; sourceTree = SOURCE_ROOT; };
 		A6F2B321279CA377003A5397 /* Detail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
 		A6F2B324279CA844003A5397 /* DetailPageInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPageInfoView.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 				A6856EBA279C22E100EA35D5 /* UIColor+Extension.swift */,
 				A6856EC1279C40ED00EA35D5 /* Result+Extensions.swift */,
 				A62AA54F279C646B007E5509 /* SDWebImage+Extensions.swift */,
+				A692FD26279CC459006FE803 /* UIView+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -479,6 +482,7 @@
 				A6856EBE279C2D4200EA35D5 /* HomeViewModel.swift in Sources */,
 				A6856EAA279BEEC400EA35D5 /* HomeHeaderView.swift in Sources */,
 				A6856EB9279C226E00EA35D5 /* Colors.swift in Sources */,
+				A692FD27279CC459006FE803 /* UIView+Extensions.swift in Sources */,
 				A6F2B32D279CBF07003A5397 /* DetailPageService.swift in Sources */,
 				A6856EA1279B837300EA35D5 /* GetMoviesResponse.swift in Sources */,
 				A6856E99279B7FEB00EA35D5 /* NetworkServiceError.swift in Sources */,

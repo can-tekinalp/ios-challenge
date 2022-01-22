@@ -86,13 +86,13 @@ extension HomeViewController: UITableViewDataSource {
     }
 }
 
-
 // MARK: UITableViewDelegate
 extension HomeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if headerView == nil {
             headerView = HomeHeaderView()
+            headerView?.delegate = self
         }
         headerView?.configure(with: homeViewModel.headerViewModel)
         return headerView
@@ -124,6 +124,22 @@ extension HomeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let viewModel = homeViewModel.cellViewModel(at: indexPath.row)
+        routeToDetail(viewModel)
+    }
+}
+
+// MARK: HomeHeaderViewDelegate
+extension HomeViewController: HomeHeaderViewDelegate {
+    
+    func userTappedCollectionCell(_ cellViewModel: MovieCellViewModel) {
+        routeToDetail(cellViewModel)
+    }
+}
+
+// MARK: Helper
+extension HomeViewController {
+
+    private func routeToDetail(_ viewModel: MovieCellViewModel) {
         let storyboard = UIStoryboard(name: "Detail", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
         controller.detailViewModel = DetailViewModel(

@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol HomeHeaderViewDelegate: AnyObject {
+    func userTappedCollectionCell(_ cellViewModel: MovieCellViewModel)
+}
+
 final class HomeHeaderView: UIView {
     
     static let cellSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width * 0.6)
@@ -16,6 +20,7 @@ final class HomeHeaderView: UIView {
     @IBOutlet weak var pageControl: UIPageControl!
     
     var viewModel: HomePageHeaderViewModel?
+    weak var delegate: HomeHeaderViewDelegate?
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -42,6 +47,7 @@ final class HomeHeaderView: UIView {
     func configure(with viewModel: HomePageHeaderViewModel?) {
         guard let viewModel = viewModel else { return }
         self.viewModel = viewModel
+        pageControl.numberOfPages = viewModel.cellCount
         if viewModel.shouldReloadData {
             viewModel.shouldReloadData = false
             collectionView.reloadData()
@@ -56,6 +62,7 @@ extension HomeHeaderView {
     private func setup() {
         let nib = UINib(nibName: "HomeHeaderCollectionCell", bundle: Bundle(for: HomeHeaderCollectionCell.self))
         collectionView.register(nib, forCellWithReuseIdentifier: "HomeHeaderCollectionCell")
+        pageControl.isUserInteractionEnabled = false
     }
 }
 
@@ -77,7 +84,8 @@ extension HomeHeaderView: UICollectionViewDataSource {
 extension HomeHeaderView: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("did select")
+        guard let viewModel = viewModel?.cellViewModel(at: indexPath.row) else { return }
+        delegate?.userTappedCollectionCell(viewModel)
     }
 }
 
@@ -89,34 +97,13 @@ extension HomeHeaderView: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension UIView {
-
-    func fillSuperView() {
-        translatesAutoresizingMaskIntoConstraints = false
-        if let superview = superview {
-            leadingAnchor.constraint(equalTo: superview.leadingAnchor).isActive = true
-            trailingAnchor.constraint(equalTo: superview.trailingAnchor).isActive = true
-            topAnchor.constraint(equalTo: superview.topAnchor).isActive = true
-            bottomAnchor.constraint(equalTo: superview.bottomAnchor).isActive = true
-        }
-    }
+// MARK: UIScrollViewDelegate
+extension HomeHeaderView: UIScrollViewDelegate {
     
-    func anchorCenterXToSuperview(constant: CGFloat = 0) {
-        translatesAutoresizingMaskIntoConstraints = false
-        if let anchor = superview?.centerXAnchor {
-            centerXAnchor.constraint(equalTo: anchor, constant: constant).isActive = true
-        }
-    }
-    
-    func anchorCenterYToSuperview(constant: CGFloat = 0) {
-        translatesAutoresizingMaskIntoConstraints = false
-        if let anchor = superview?.centerYAnchor {
-            centerYAnchor.constraint(equalTo: anchor, constant: constant).isActive = true
-        }
-    }
-    
-    func anchorCenterSuperview() {
-        anchorCenterXToSuperview()
-        anchorCenterYToSuperview()
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offSet = scrollView.contentOffset.x
+        let width = scrollView.frame.width
+        let horizontalCenter = width / 2
+        pageControl.currentPage = Int(offSet + horizontalCenter) / Int(width)
     }
 }
