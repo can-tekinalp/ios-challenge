@@ -39,12 +39,15 @@ class HomeViewModel {
     
     private func setupCellViewModels(result: HomePageResult) {
         let firstFive = Array(result.nowPlayingMovies.prefix(5))
-        self.headerViewModel = HomePageHeaderViewModel(movies: firstFive)
-
-        let upcomingMovies = result.upcomingMovies
+        headerViewModel = HomePageHeaderViewModel(movies: firstFive)
+        tableCellViewModelList = createTableCellViewModels(startingIndex: 0, movies: result.upcomingMovies)
+    }
+    
+    private func createTableCellViewModels(startingIndex: Int, movies: [Movie]) -> [MovieCellViewModel] {
         var tableCellViewModelList: [MovieCellViewModel] = []
-        tableCellViewModelList.reserveCapacity(upcomingMovies.count)
-        for (index, movie) in upcomingMovies.enumerated() {
+        tableCellViewModelList.reserveCapacity(movies.count)
+        var index = startingIndex
+        for movie in movies {
             tableCellViewModelList.append(
                 MovieCellViewModel(
                     index: index,
@@ -52,12 +55,26 @@ class HomeViewModel {
                     imageLoader: ImageLoader(imageUrl: movie.backdropUrl)
                 )
             )
+            index += 1
         }
-        self.tableCellViewModelList = tableCellViewModelList
+        return tableCellViewModelList
     }
     
-    func fetchNextPage() {
-        
+    func fetchNextPage(onSuccess: @escaping () -> Void, onError: @escaping (String) -> Void) {
+        homePageService.fetchNextPage { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let response):
+                let newCellViewModels = self.createTableCellViewModels(
+                    startingIndex: self.tableCellViewModelList.last!.index + 1,
+                    movies: response.results
+                )
+                self.tableCellViewModelList.append(contentsOf: newCellViewModels)
+                onSuccess()
+            case .failure(let error):
+                onError(error)
+            }
+        }
     }
     
     func cellViewModel(at index: Int) -> MovieCellViewModel {

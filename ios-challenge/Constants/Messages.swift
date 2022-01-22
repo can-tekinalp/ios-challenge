@@ -6,3 +6,4 @@
 //
 
 let unexpectedErrorMessage = "An unexpected error occurred."
+let errorOccuredRefreshListMessage = "An error occured while fetching, please refresh the page"

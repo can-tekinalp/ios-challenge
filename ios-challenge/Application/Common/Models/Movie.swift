@@ -22,7 +22,7 @@ fileprivate let uiDateFormatter: DateFormatter = {
 }()
 
 struct Movie: Decodable {
-    let posterPath: String
+    let posterPath: String?
     let adult: Bool
     let overview: String
     let releaseDate: String

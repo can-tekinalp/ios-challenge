@@ -10,11 +10,11 @@ import UIKit
 extension UIViewController {
     
     func showError(message: String?) {
-        showOkAlert("Hata", message ?? unexpectedErrorMessage)
+        showOkAlert("Error", message ?? unexpectedErrorMessage)
     }
     
     func showOkAlert(_ title: String, _ message: String) {
-        let okAction = UIAlertAction(title: "Tamam", style: .default, handler: nil)
+        let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.addAction(okAction)
         DispatchQueue.main.async {

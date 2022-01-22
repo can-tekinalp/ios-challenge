@@ -105,11 +105,19 @@ extension HomeViewController: UITableViewDelegate {
         return 1
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == homeViewModel.cellCount - 1 {
+            homeViewModel.fetchNextPage(
+                onSuccess: { [weak self] in
+                    self?.tableView.reloadData()
+                }, onError: { [weak self] errorMessage in
+                    self?.showError(message: errorMessage)
+                }
+            )
+        }
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("did select")
     }
-}
-
-class FooterView: UIView {
-    
 }

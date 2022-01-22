@@ -14,6 +14,7 @@ struct HomePageResult {
 
 protocol HomePageServiceProcotol {
     func fetchHomePage(completionHandler: @escaping (Result<HomePageResult, String>) -> Void)
+    func fetchNextPage(completionHandler: @escaping (Result<GetMoviesResponse, String>) -> Void)
 }
 
 class HomePageService: HomePageServiceProcotol {
@@ -47,6 +48,30 @@ class HomePageService: HomePageServiceProcotol {
                 upcomingMovies: upcomingMovies.results
             )
             completionHandler(.success(homePageResult))
+        }
+    }
+    
+    func fetchNextPage(completionHandler: @escaping (Result<GetMoviesResponse, String>) -> Void) {
+        guard let lastResponse = upcomingMoviesResult else {
+            completionHandler(.failure(errorOccuredRefreshListMessage))
+            return
+        }
+        
+        guard let lastGetMovieResponse = lastResponse.success else {
+            completionHandler(.failure(errorOccuredRefreshListMessage))
+            return
+        }
+        guard lastGetMovieResponse.page < lastGetMovieResponse.totalPages else { return }
+        let nextPage = lastGetMovieResponse.page + 1
+        let params = ["page": nextPage]
+        networkService.request(decodable: GetMoviesResponse.self, route: .upcoming, parameters: params) { [weak self] result in
+            switch result {
+            case .success(let response):
+                self?.upcomingMoviesResult = result
+                completionHandler(.success(response))
+            case .failure(let error):
+                completionHandler(.failure(error.message))
+            }
         }
     }
     
