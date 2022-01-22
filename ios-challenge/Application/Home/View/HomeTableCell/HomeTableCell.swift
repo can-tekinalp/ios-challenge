@@ -39,10 +39,6 @@ final class HomeTableCell: UITableViewCell {
         viewModel?.delegate = self
         viewModel?.getImage(for: index)
     }
-    
-    func imageLoadCompleted() {
-        
-    }
 }
 
 // MARK: Setup
@@ -70,16 +66,3 @@ extension HomeTableCell: MovieCellViewModelDelegate {
         movieImageView.image = image
     }
 }
-
-//viewModel?.getImage(
-//    showLoadingHandler: { [weak self] isLoading, imageForIndex in
-//        guard self?.index == imageForIndex else { return }
-//        isLoading ? self?.activityIndicator.startAnimating() : self?.activityIndicator.stopAnimating()
-//    }, completionHandler: { [weak self] image, imageForIndex in
-//        guard self?.index == imageForIndex else {
-//            print()
-//            return
-//        }
-//        self?.movieImageView.image = image
-//    }
-//)
