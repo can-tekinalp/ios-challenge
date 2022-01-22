@@ -33,12 +33,10 @@ final class HomeHeaderCollectionCell: UICollectionViewCell {
 extension HomeHeaderCollectionCell: MovieCellViewModelDelegate {
     
     func showLoadingIndicator(_ isLoading: Bool, for index: Int) {
-        guard self.index == index else { return }
         isLoading ? activityIndicator.startAnimating() : activityIndicator.stopAnimating()
     }
     
     func imageLoadCompleted(_ image: UIImage?, for index: Int) {
-        guard self.index == index else { return }
         imageView.image = image
     }
 }

@@ -58,6 +58,7 @@ extension DetailViewController {
         textView.textContainerInset = .zero
         title = detailViewModel.pageTitle
         imageView.backgroundColor = .systemGray
+        imageView.sd_imageIndicator = SDWebImageActivityIndicator.whiteLarge
         loadingView.isHidden = false
         infoView.delegate = self
         bindViewModel()
