@@ -7,17 +7,24 @@
 
 import Foundation
 
-fileprivate let apiDateFormatter: DateFormatter = {
+let apiDateFormatter: DateFormatter = {
     let formatter = DateFormatter()
     formatter.locale = .current
     formatter.dateFormat = "yyyy-MM-dd"
     return formatter
 }()
 
-fileprivate let uiDateFormatter: DateFormatter = {
+let uiDateFormatter: DateFormatter = {
     let formatter = DateFormatter()
     formatter.locale = .current
-    formatter.dateFormat = "dd-MM-yyyy"
+    formatter.dateFormat = "dd.MM.yyyy"
+    return formatter
+}()
+
+let releaseYearFormatter: DateFormatter = {
+    let formatter = DateFormatter()
+    formatter.locale = .current
+    formatter.dateFormat = "yyyy"
     return formatter
 }()
 
@@ -57,9 +64,18 @@ struct Movie: Decodable {
 
 extension Movie {
     
+    var pageTitle: String? {
+        return "\(title) (\(releaseYear))"
+    }
+    
     var uiFormattedDate: String? {
         guard let date = apiDateFormatter.date(from: releaseDate) else { return nil }
         return uiDateFormatter.string(from: date)
+    }
+    
+    var releaseYear: String {
+        guard let date = apiDateFormatter.date(from: releaseDate) else { return "" }
+        return releaseYearFormatter.string(from: date)
     }
     
     var backdropUrl: URL? {

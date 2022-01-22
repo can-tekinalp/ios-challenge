@@ -12,6 +12,7 @@ let baseURL = "https://api.themoviedb.org/3"
 enum ApiRoutes {
     case nowPlaying
     case upcoming
+    case detail(String)
     
     var path: String {
         switch self {
@@ -19,6 +20,8 @@ enum ApiRoutes {
             return "/movie/now_playing"
         case .upcoming:
             return "/movie/upcoming"
+        case .detail(let id):
+            return "/movie/\(id)"
         }
     }
     

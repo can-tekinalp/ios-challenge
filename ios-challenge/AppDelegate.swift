@@ -22,8 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         let storyboard = UIStoryboard(name: "Home", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+        let navigationController = UINavigationController(rootViewController: controller)
         controller.homeViewModel = HomeViewModel(homePageService: HomePageService())
-        window?.rootViewController = controller
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }
 }

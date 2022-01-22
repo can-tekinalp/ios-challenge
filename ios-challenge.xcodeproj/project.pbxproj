@@ -41,6 +41,11 @@
 		A6856EC7279C43BC00EA35D5 /* HomePageHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6856EC6279C43BC00EA35D5 /* HomePageHeaderViewModel.swift */; };
 		A6F2B320279CA366003A5397 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F2B31F279CA366003A5397 /* DetailViewController.swift */; };
 		A6F2B322279CA377003A5397 /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6F2B321279CA377003A5397 /* Detail.storyboard */; };
+		A6F2B325279CA844003A5397 /* DetailPageInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F2B324279CA844003A5397 /* DetailPageInfoView.swift */; };
+		A6F2B327279CA879003A5397 /* DetailPageInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6F2B326279CA879003A5397 /* DetailPageInfoView.xib */; };
+		A6F2B329279CB078003A5397 /* MovieDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F2B328279CB078003A5397 /* MovieDetail.swift */; };
+		A6F2B32D279CBF07003A5397 /* DetailPageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F2B32C279CBF07003A5397 /* DetailPageService.swift */; };
+		A6F2B32F279CBF19003A5397 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F2B32E279CBF19003A5397 /* DetailViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,6 +86,11 @@
 		A6856EC6279C43BC00EA35D5 /* HomePageHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageHeaderViewModel.swift; sourceTree = "<group>"; };
 		A6F2B31F279CA366003A5397 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DetailViewController.swift; path = "ios-challenge/Application/Detail/DetailViewController.swift"; sourceTree = SOURCE_ROOT; };
 		A6F2B321279CA377003A5397 /* Detail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
+		A6F2B324279CA844003A5397 /* DetailPageInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPageInfoView.swift; sourceTree = "<group>"; };
+		A6F2B326279CA879003A5397 /* DetailPageInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailPageInfoView.xib; sourceTree = "<group>"; };
+		A6F2B328279CB078003A5397 /* MovieDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetail.swift; sourceTree = "<group>"; };
+		A6F2B32C279CBF07003A5397 /* DetailPageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPageService.swift; sourceTree = "<group>"; };
+		A6F2B32E279CBF19003A5397 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		D876E86B6FD047F77FA00C78 /* Pods_ios_challenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ios_challenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -214,6 +224,7 @@
 			children = (
 				A6856EA0279B837300EA35D5 /* GetMoviesResponse.swift */,
 				A6856E9E279B82AC00EA35D5 /* Movie.swift */,
+				A6F2B328279CB078003A5397 /* MovieDetail.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -294,6 +305,9 @@
 		A6F2B31D279CA32C003A5397 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				A6F2B32B279CBEF7003A5397 /* Service */,
+				A6F2B32A279CBEF2003A5397 /* ViewModel */,
+				A6F2B323279CA832003A5397 /* View */,
 				A6F2B31E279CA333003A5397 /* ViewController */,
 				A6F2B321279CA377003A5397 /* Detail.storyboard */,
 			);
@@ -306,6 +320,31 @@
 				A6F2B31F279CA366003A5397 /* DetailViewController.swift */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		A6F2B323279CA832003A5397 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A6F2B324279CA844003A5397 /* DetailPageInfoView.swift */,
+				A6F2B326279CA879003A5397 /* DetailPageInfoView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A6F2B32A279CBEF2003A5397 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A6F2B32E279CBF19003A5397 /* DetailViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A6F2B32B279CBEF7003A5397 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				A6F2B32C279CBF07003A5397 /* DetailPageService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -369,6 +408,7 @@
 			files = (
 				A6856E7F279B759900EA35D5 /* LaunchScreen.storyboard in Resources */,
 				A6856EAC279BEEDB00EA35D5 /* HomeHeaderView.xib in Resources */,
+				A6F2B327279CA879003A5397 /* DetailPageInfoView.xib in Resources */,
 				A6856E7C279B759900EA35D5 /* Assets.xcassets in Resources */,
 				A6F2B322279CA377003A5397 /* Detail.storyboard in Resources */,
 				A6856EB2279BF25E00EA35D5 /* HomeHeaderCollectionCell.xib in Resources */,
@@ -427,8 +467,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6F2B325279CA844003A5397 /* DetailPageInfoView.swift in Sources */,
 				A6856EC2279C40ED00EA35D5 /* Result+Extensions.swift in Sources */,
+				A6F2B32F279CBF19003A5397 /* DetailViewModel.swift in Sources */,
 				A62AA550279C646B007E5509 /* SDWebImage+Extensions.swift in Sources */,
+				A6F2B329279CB078003A5397 /* MovieDetail.swift in Sources */,
 				A6F2B320279CA366003A5397 /* DetailViewController.swift in Sources */,
 				A6856EC0279C405800EA35D5 /* ActivityIndicatorManager.swift in Sources */,
 				A6856EC7279C43BC00EA35D5 /* HomePageHeaderViewModel.swift in Sources */,
@@ -436,6 +479,7 @@
 				A6856EBE279C2D4200EA35D5 /* HomeViewModel.swift in Sources */,
 				A6856EAA279BEEC400EA35D5 /* HomeHeaderView.swift in Sources */,
 				A6856EB9279C226E00EA35D5 /* Colors.swift in Sources */,
+				A6F2B32D279CBF07003A5397 /* DetailPageService.swift in Sources */,
 				A6856EA1279B837300EA35D5 /* GetMoviesResponse.swift in Sources */,
 				A6856E99279B7FEB00EA35D5 /* NetworkServiceError.swift in Sources */,
 				A6856EA4279B841500EA35D5 /* Log.swift in Sources */,

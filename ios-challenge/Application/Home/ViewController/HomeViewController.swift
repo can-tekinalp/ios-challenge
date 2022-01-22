@@ -20,6 +20,11 @@ final class HomeViewController: UIViewController {
         setup()
         fetchHomePage()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
 
     private func fetchHomePage() {
         homeViewModel.fetchHomePage (
@@ -118,6 +123,14 @@ extension HomeViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("did select")
+        let viewModel = homeViewModel.cellViewModel(at: indexPath.row)
+        let storyboard = UIStoryboard(name: "Detail", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
+        controller.detailViewModel = DetailViewModel(
+            pageTitle: viewModel.detailPageTitle,
+            movieId: "\(viewModel.movie.id)",
+            detailPageServiceProtocol: DetailPageService()
+        )
+        navigationController?.pushViewController(controller, animated: true)
     }
 }

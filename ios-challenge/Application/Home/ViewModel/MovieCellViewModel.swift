@@ -15,7 +15,7 @@ protocol MovieCellViewModelDelegate: AnyObject {
 
 class MovieCellViewModel {
     
-    private let movie: Movie
+    let movie: Movie
     let index: Int
     var imageLoader: ImageLoaderProtocol
     weak var delegate: MovieCellViewModelDelegate?
@@ -51,5 +51,9 @@ extension MovieCellViewModel {
     
     var date: String? {
         return movie.uiFormattedDate
+    }
+    
+    var detailPageTitle: String {
+        return movie.pageTitle ?? ""
     }
 }
