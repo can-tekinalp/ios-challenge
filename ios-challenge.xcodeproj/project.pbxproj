@@ -39,6 +39,8 @@
 		A6856EC2279C40ED00EA35D5 /* Result+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6856EC1279C40ED00EA35D5 /* Result+Extensions.swift */; };
 		A6856EC5279C411400EA35D5 /* HomePageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6856EC4279C411400EA35D5 /* HomePageService.swift */; };
 		A6856EC7279C43BC00EA35D5 /* HomePageHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6856EC6279C43BC00EA35D5 /* HomePageHeaderViewModel.swift */; };
+		A6F2B320279CA366003A5397 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F2B31F279CA366003A5397 /* DetailViewController.swift */; };
+		A6F2B322279CA377003A5397 /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6F2B321279CA377003A5397 /* Detail.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +79,8 @@
 		A6856EC1279C40ED00EA35D5 /* Result+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Result+Extensions.swift"; sourceTree = "<group>"; };
 		A6856EC4279C411400EA35D5 /* HomePageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageService.swift; sourceTree = "<group>"; };
 		A6856EC6279C43BC00EA35D5 /* HomePageHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageHeaderViewModel.swift; sourceTree = "<group>"; };
+		A6F2B31F279CA366003A5397 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DetailViewController.swift; path = "ios-challenge/Application/Detail/DetailViewController.swift"; sourceTree = SOURCE_ROOT; };
+		A6F2B321279CA377003A5397 /* Detail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
 		D876E86B6FD047F77FA00C78 /* Pods_ios_challenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ios_challenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -147,6 +151,7 @@
 		A6856E86279B774000EA35D5 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				A6F2B31D279CA32C003A5397 /* Detail */,
 				A6856E9C279B826000EA35D5 /* Common */,
 				A6856E87279B774A00EA35D5 /* Home */,
 			);
@@ -286,6 +291,23 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+		A6F2B31D279CA32C003A5397 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				A6F2B31E279CA333003A5397 /* ViewController */,
+				A6F2B321279CA377003A5397 /* Detail.storyboard */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		A6F2B31E279CA333003A5397 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A6F2B31F279CA366003A5397 /* DetailViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -348,6 +370,7 @@
 				A6856E7F279B759900EA35D5 /* LaunchScreen.storyboard in Resources */,
 				A6856EAC279BEEDB00EA35D5 /* HomeHeaderView.xib in Resources */,
 				A6856E7C279B759900EA35D5 /* Assets.xcassets in Resources */,
+				A6F2B322279CA377003A5397 /* Detail.storyboard in Resources */,
 				A6856EB2279BF25E00EA35D5 /* HomeHeaderCollectionCell.xib in Resources */,
 				A6856E7A279B759800EA35D5 /* Main.storyboard in Resources */,
 				A6856EB7279BF6AA00EA35D5 /* HomeTableCell.xib in Resources */,
@@ -406,6 +429,7 @@
 			files = (
 				A6856EC2279C40ED00EA35D5 /* Result+Extensions.swift in Sources */,
 				A62AA550279C646B007E5509 /* SDWebImage+Extensions.swift in Sources */,
+				A6F2B320279CA366003A5397 /* DetailViewController.swift in Sources */,
 				A6856EC0279C405800EA35D5 /* ActivityIndicatorManager.swift in Sources */,
 				A6856EC7279C43BC00EA35D5 /* HomePageHeaderViewModel.swift in Sources */,
 				A62AA552279C66C1007E5509 /* MovieCellViewModel.swift in Sources */,
