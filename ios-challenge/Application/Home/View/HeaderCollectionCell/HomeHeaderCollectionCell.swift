@@ -32,11 +32,11 @@ final class HomeHeaderCollectionCell: UICollectionViewCell {
 
 extension HomeHeaderCollectionCell: MovieCellViewModelDelegate {
     
-    func showLoadingIndicator(_ isLoading: Bool, for index: Int) {
+    func showLoadingIndicator(_ isLoading: Bool) {
         isLoading ? activityIndicator.startAnimating() : activityIndicator.stopAnimating()
     }
     
-    func imageLoadCompleted(_ image: UIImage?, for index: Int) {
+    func imageLoadCompleted(_ image: UIImage?) {
         imageView.image = image
     }
 }
