@@ -75,7 +75,7 @@ extension HomeHeaderView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeHeaderCollectionCell", for: indexPath) as! HomeHeaderCollectionCell
-        cell.configure(with: viewModel?.cellViewModel(at: indexPath.row), index: indexPath.row)
+        cell.configure(with: viewModel?.cellViewModel(at: indexPath.row))
         return cell
     }
 }

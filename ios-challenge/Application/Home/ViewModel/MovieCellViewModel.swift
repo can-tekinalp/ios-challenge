@@ -8,33 +8,36 @@
 import UIKit
 
 protocol MovieCellViewModelDelegate: AnyObject {
-    var index: Int { get }
     func showLoadingIndicator(_ isLoading: Bool)
     func imageLoadCompleted(_ image: UIImage?)
 }
 
 class MovieCellViewModel {
     
+    private var shouldCallDelegates = true
     let movie: Movie
-    let index: Int
     var imageLoader: ImageLoaderProtocol
     weak var delegate: MovieCellViewModelDelegate?
     
-    init(index: Int, movie: Movie, imageLoader: ImageLoaderProtocol) {
-        self.index = index
+    init(movie: Movie, imageLoader: ImageLoaderProtocol) {
         self.movie = movie
         self.imageLoader = imageLoader
     }
     
-    func getImage(for index: Int) {
+    func getImage() {
+        shouldCallDelegates = true
         imageLoader.showLoadingHandler = { [weak self] isLoading in
-            guard self?.delegate?.index == self?.index else { return }
+            guard self?.shouldCallDelegates == true else { return }
             self?.delegate?.showLoadingIndicator(isLoading)
         }
         imageLoader.getImage { [weak self] image in
-            guard self?.delegate?.index == self?.index else { return }
+            guard self?.shouldCallDelegates == true else { return }
             self?.delegate?.imageLoadCompleted(image)
         }
+    }
+    
+    func cancelGetImage() {
+        shouldCallDelegates = false
     }
 }
 

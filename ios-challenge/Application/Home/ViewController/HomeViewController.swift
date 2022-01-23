@@ -80,7 +80,7 @@ extension HomeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTableCell", for: indexPath) as! HomeTableCell
-        cell.configure(with: homeViewModel.cellViewModel(at: indexPath.row), index: indexPath.row)
+        cell.configure(with: homeViewModel.cellViewModel(at: indexPath.row))
         cell.lineView.alpha = indexPath.row == homeViewModel.cellCount - 1 ? 0 : 1
         return cell
     }

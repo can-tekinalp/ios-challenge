@@ -17,11 +17,10 @@ final class HomeTableCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var lineView: UIView!
     
-    var index: Int = -1
+    private var viewModel: MovieCellViewModel?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         setup()
     }
     
@@ -29,15 +28,16 @@ final class HomeTableCell: UITableViewCell {
         super.prepareForReuse()
         movieImageView.image = nil
         activityIndicator.stopAnimating()
+        viewModel?.cancelGetImage()
     }
     
-    func configure(with viewModel: MovieCellViewModel?, index: Int) {
-        self.index = index
+    func configure(with viewModel: MovieCellViewModel?) {
+        self.viewModel = viewModel
         titleLabel.text = viewModel?.title
         descriptionLabel.text = viewModel?.description
         dateLabel.text = viewModel?.date
         viewModel?.delegate = self
-        viewModel?.getImage(for: index)
+        viewModel?.getImage()
     }
 }
 

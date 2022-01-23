@@ -14,19 +14,26 @@ final class HomeHeaderCollectionCell: UICollectionViewCell {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    var index: Int = -1
+    private var viewModel: MovieCellViewModel?
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
     
-    func configure(with viewModel: MovieCellViewModel?, index: Int) {
-        self.index = index
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        imageView.image = nil
+        activityIndicator.stopAnimating()
+        viewModel?.cancelGetImage()
+    }
+    
+    func configure(with viewModel: MovieCellViewModel?) {
+        self.viewModel = viewModel
         titleLabel.text = viewModel?.title
         descriptionLabel.text = viewModel?.description
         viewModel?.delegate = self
-        viewModel?.getImage(for: index)
+        viewModel?.getImage()
     }
 }
 

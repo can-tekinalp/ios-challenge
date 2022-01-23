@@ -40,24 +40,12 @@ class HomeViewModel {
     private func setupCellViewModels(result: HomePageResult) {
         let firstFive = Array(result.nowPlayingMovies.prefix(5))
         headerViewModel = HomePageHeaderViewModel(movies: firstFive)
-        tableCellViewModelList = createTableCellViewModels(startingIndex: 0, movies: result.upcomingMovies)
-    }
-    
-    private func createTableCellViewModels(startingIndex: Int, movies: [Movie]) -> [MovieCellViewModel] {
-        var tableCellViewModelList: [MovieCellViewModel] = []
-        tableCellViewModelList.reserveCapacity(movies.count)
-        var index = startingIndex
-        for movie in movies {
-            tableCellViewModelList.append(
-                MovieCellViewModel(
-                    index: index,
-                    movie: movie,
-                    imageLoader: ImageLoader(imageUrl: movie.backdropUrl)
-                )
+        tableCellViewModelList = result.upcomingMovies.map {
+            return MovieCellViewModel(
+                movie: $0,
+                imageLoader: ImageLoader(imageUrl: $0.backdropUrl)
             )
-            index += 1
         }
-        return tableCellViewModelList
     }
     
     func fetchNextPage(onSuccess: @escaping () -> Void, onError: @escaping (String) -> Void) {
@@ -65,10 +53,12 @@ class HomeViewModel {
             guard let self = self else { return }
             switch result {
             case .success(let response):
-                let newCellViewModels = self.createTableCellViewModels(
-                    startingIndex: self.tableCellViewModelList.last!.index + 1,
-                    movies: response.results
-                )
+                let newCellViewModels = response.results.map {
+                    return MovieCellViewModel(
+                        movie: $0,
+                        imageLoader: ImageLoader(imageUrl: $0.backdropUrl)
+                    )
+                }
                 self.tableCellViewModelList.append(contentsOf: newCellViewModels)
                 onSuccess()
             case .failure(let error):
