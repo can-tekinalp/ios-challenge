@@ -78,8 +78,13 @@ extension Movie {
         return releaseYearFormatter.string(from: date)
     }
     
-    var backdropUrl: URL? {
+    var originalBackdropUrl: URL? {
         guard let backdropPath = backdropPath else { return nil }
         return URL(string: "https://image.tmdb.org/t/p/original\(backdropPath)")
+    }
+    
+    var lowResBackdropUrl: URL? {
+        guard let backdropPath = backdropPath else { return nil }
+        return URL(string: "https://image.tmdb.org/t/p/w300\(backdropPath)")
     }
 }

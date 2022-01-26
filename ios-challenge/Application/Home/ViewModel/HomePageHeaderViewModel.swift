@@ -17,7 +17,7 @@ class HomePageHeaderViewModel {
         self.cellViewModelList = movies.map {
             return MovieCellViewModel(
                 movie: $0,
-                imageLoader: ImageLoader(imageUrl: $0.backdropUrl)
+                imageLoader: ImageLoader(imageUrl: $0.originalBackdropUrl)
             )
         }
     }

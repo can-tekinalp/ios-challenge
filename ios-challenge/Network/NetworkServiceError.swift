@@ -20,3 +20,5 @@ enum NetworkServiceError: Error {
         }
     }
 }
+
+extension NetworkServiceError: Equatable { }

@@ -5,14 +5,12 @@
 //  Created by Can Tekinalp on 22.01.2022.
 //
 
-typealias ShowLoadingHandler = (Bool) -> Void
-
 class HomeViewModel {
     
     private let homePageService: HomePageServiceProcotol
     private(set) var headerViewModel: HomePageHeaderViewModel?
     private var tableCellViewModelList: [MovieCellViewModel] = []
-    var showLoadingHandler: ShowLoadingHandler?
+    var isLoadingHandler: IsLoadingHandler?
     
     var cellCount: Int {
         return tableCellViewModelList.count
@@ -23,10 +21,10 @@ class HomeViewModel {
     }
     
     func fetchHomePage(onSuccess: @escaping () -> Void, onError: @escaping (String) -> Void) {
-        showLoadingHandler?(true)
+        isLoadingHandler?(true)
         homePageService.fetchHomePage { [weak self] homePageResult in
             guard let self = self else { return }
-            self.showLoadingHandler?(false)
+            self.isLoadingHandler?(false)
             switch homePageResult {
             case .success(let movies):
                 self.setupCellViewModels(result: movies)
@@ -43,7 +41,7 @@ class HomeViewModel {
         tableCellViewModelList = result.upcomingMovies.map {
             return MovieCellViewModel(
                 movie: $0,
-                imageLoader: ImageLoader(imageUrl: $0.backdropUrl)
+                imageLoader: ImageLoader(imageUrl: $0.lowResBackdropUrl)
             )
         }
     }
@@ -56,7 +54,7 @@ class HomeViewModel {
                 let newCellViewModels = response.results.map {
                     return MovieCellViewModel(
                         movie: $0,
-                        imageLoader: ImageLoader(imageUrl: $0.backdropUrl)
+                        imageLoader: ImageLoader(imageUrl: $0.lowResBackdropUrl)
                     )
                 }
                 self.tableCellViewModelList.append(contentsOf: newCellViewModels)

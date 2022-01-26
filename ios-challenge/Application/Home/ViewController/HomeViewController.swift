@@ -60,7 +60,7 @@ extension HomeViewController {
     }
     
     private func bindViewModel() {
-        homeViewModel.showLoadingHandler = { [weak self] showLoading in
+        homeViewModel.isLoadingHandler = { [weak self] showLoading in
             if showLoading {
                 self?.activityIndicatorManager.show()
             } else {

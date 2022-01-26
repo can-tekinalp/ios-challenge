@@ -13,7 +13,7 @@ class DetailViewModel {
     private let detailPageServiceProtocol: DetailPageServiceProtocol
     private var movieDetail: MovieDetail?
     let pageTitle: String
-    var showLoadingHandler: ShowLoadingHandler?
+    var showLoadingHandler: IsLoadingHandler?
 
     init(pageTitle: String, movieId: String, detailPageServiceProtocol: DetailPageServiceProtocol) {
         self.pageTitle = pageTitle

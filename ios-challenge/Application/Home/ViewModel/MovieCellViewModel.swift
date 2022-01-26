@@ -22,22 +22,28 @@ class MovieCellViewModel {
     init(movie: Movie, imageLoader: ImageLoaderProtocol) {
         self.movie = movie
         self.imageLoader = imageLoader
+        bind()
     }
     
-    func getImage() {
-        shouldCallDelegates = true
-        imageLoader.showLoadingHandler = { [weak self] isLoading in
+    private func bind() {
+        imageLoader.isLoadingHandler = { [weak self] isLoading in
             guard self?.shouldCallDelegates == true else { return }
             self?.delegate?.showLoadingIndicator(isLoading)
         }
-        imageLoader.getImage { [weak self] image in
+        imageLoader.imageDownloadedHandler = { [weak self] image in
             guard self?.shouldCallDelegates == true else { return }
             self?.delegate?.imageLoadCompleted(image)
         }
     }
     
+    func getImage() {
+        shouldCallDelegates = true
+        imageLoader.getImage()
+    }
+    
     func cancelGetImage() {
         shouldCallDelegates = false
+        imageLoader.cancel()
     }
 }
 
